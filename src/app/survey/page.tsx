@@ -7,7 +7,7 @@ export default function SurveyPage() {
         <b>Principal Investigator:</b> Eun-mee Kim (Professor, Department of Communication)<br /><br />
         This research aims to evaluate the perceived similarity between individuals and their digital doppelgängers, referred to as AITwinBots, which are generated through large language models (LLM). Participation is entirely voluntary, and your consent is crucial. Please read the following details carefully to understand the research's purpose and content. Feel free to discuss it with family or friends before deciding. Let us know if you agree to participate. If you have any questions, please contact soeun022@snu.ac.kr. The researcher will offer detailed answers.<br /><br />
         <b>1. Why is this research being conducted?</b><br />
-        Using Artificial Intelligence (LLM), this study aims to develop chatbots that mimic the personalities of human beings (doppelgängers). This study aims to test if it is possible to create chatbots (doppelgängers) that exhibit similar personalities to individuals using AI (LLM). Our goal is to see how closely these chatbots can match an individual's self-knowledge, personal traits, values, and lifestyle.<br /><br />
+        Using Artificial Intelligence (LLM), this study aims to develop chatbots that mimic the personalities of human beings (doppelgängers). This study aims to test if it is possible to create chatbots (doppelgängers) that exhibit similar personalities to individuals using AI (LLM). Our goal is to see how closely these chatbots can match an individual&apos;s self-knowledge, personal traits, values, and lifestyle.<br /><br />
         <b>2. How many people will participate in the research?</b><br />
         Approximately 1000 adults (18 or older) will participate in the study.<br /><br />
         <b>3. How will the research proceed?</b><br />
@@ -22,7 +22,7 @@ export default function SurveyPage() {
         <b>6. Are there any side effects or risks involved in participation in this research?</b><br />
         Since this study is an online survey and conducted anonymously, no direct side effects or risks are associated with it.<br /><br />
         <b>7. Are there any advantages to participating in the research?</b><br />
-        Your participation in this research offers an ample opportunity to advance AI technology and understand how it could mirror human personalities. In comparing your AI counterparts' generated responses with your own, you may gain insight into yourself and the latest AI technology.<br /><br />
+        Your participation in this research offers an ample opportunity to advance AI technology and understand how it could mirror human personalities. In comparing your AI counterparts&apos; generated responses with your own, you may gain insight into yourself and the latest AI technology.<br /><br />
         <b>8. Are there any disadvantages to participating in the research?</b><br />
         You can choose to participate or not participate in the research without any negative consequences.<br /><br />
         <b>9. Is the information gathered during the participation secure?</b><br />
