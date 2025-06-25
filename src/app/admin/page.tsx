@@ -9,6 +9,8 @@ const pages = [
   { href: '/results', label: 'Results Page' },
   { href: '/settings', label: 'Settings Page' },
   { href: '/admin/logs', label: 'Consent Logs' },
+  { href: '/admin/uc', label: 'User Creation (UC)' },
+  { href: '/admin/iddata', label: 'ID Data' },
 ];
 
 export default function AdminPage() {
