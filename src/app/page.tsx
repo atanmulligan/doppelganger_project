@@ -1,4 +1,7 @@
+import { useRouter } from 'next/navigation';
+
 export default function Home() {
+  const router = useRouter();
   return (
     <div style={{ minHeight: '100vh', background: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '32px' }}>
       <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '2rem', letterSpacing: '-1px' }}>AITwinBot</h1>
@@ -13,7 +16,10 @@ export default function Home() {
         • Attention-check questions are included; answer carefully for quality and compensation eligibility.<br />
         • If you understand and agree, press &quot;YES&quot; to continue.
       </div>
-      <button style={{ background: '#000', color: '#fff', border: 'none', borderRadius: '12px', padding: '20px 48px', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer', marginBottom: '1.5rem' }}>
+      <button
+        style={{ background: '#000', color: '#fff', border: 'none', borderRadius: '12px', padding: '20px 48px', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer', marginBottom: '1.5rem' }}
+        onClick={() => router.push('/survey')}
+      >
         Start Survey
       </button>
     </div>

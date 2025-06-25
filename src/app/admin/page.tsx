@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const pages = [
   { href: '/', label: 'Front Page' },
-  { href: '/survey', label: 'Survey Page' },
+  { href: '/survey', label: 'ICR' },
   { href: '/results', label: 'Results Page' },
   { href: '/settings', label: 'Settings Page' },
 ];
