@@ -4,8 +4,11 @@ import Link from 'next/link';
 const pages = [
   { href: '/', label: 'Front Page' },
   { href: '/survey', label: 'ICR' },
+  { href: '/cf', label: 'Consent Form (CF)' },
+  { href: '/id', label: 'ID Page' },
   { href: '/results', label: 'Results Page' },
   { href: '/settings', label: 'Settings Page' },
+  { href: '/admin/logs', label: 'Consent Logs' },
 ];
 
 export default function AdminPage() {

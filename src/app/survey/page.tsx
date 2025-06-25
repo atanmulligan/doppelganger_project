@@ -1,4 +1,8 @@
+"use client";
+import { useRouter } from 'next/navigation';
+
 export default function SurveyPage() {
+  const router = useRouter();
   return (
     <div style={{ minHeight: '100vh', background: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', padding: '32px' }}>
       <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center' }}>Instruction and Consent Form for Research Participants</h1>
@@ -38,6 +42,12 @@ export default function SurveyPage() {
         Phone: 02-880-5153<br />
         E-mail: irb@snu.ac.kr
       </div>
+      <button
+        style={{ background: '#000', color: '#fff', border: 'none', borderRadius: '12px', padding: '16px 40px', fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', marginTop: '2.5rem' }}
+        onClick={() => router.push('/cf')}
+      >
+        Next
+      </button>
     </div>
   );
 } 
