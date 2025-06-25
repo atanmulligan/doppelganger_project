@@ -1,28 +1,38 @@
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { addConsentLog } from '@/lib/database';
 
 export default function ConsentFormPage() {
   const [consent, setConsent] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (consent === 'agree') {
-      // Save log to localStorage (simulate admin log)
-      const logs = JSON.parse(localStorage.getItem('cf_logs') || '[]');
-      logs.push({
-        time: new Date().toISOString(),
-        consent: 'agree',
-      });
-      localStorage.setItem('cf_logs', JSON.stringify(logs));
-      router.push('/id');
+      setIsLoading(true);
+      setError('');
+      
+      try {
+        // For now, we'll use a placeholder prolific_id since it's not collected yet
+        // In a real implementation, you might want to collect this earlier or use a session ID
+        await addConsentLog('pending', 'agree');
+        router.push('/id');
+      } catch (err) {
+        setError('Error saving consent. Please try again.');
+        console.error('Error saving consent:', err);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
 
   return (
     <div style={{ minHeight: '100vh', background: '#fff', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', padding: '32px' }}>
       <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center' }}>Consent Form</h1>
-      <div style={{ maxWidth: 700, fontSize: '1.05rem', color: '#222', lineHeight: 1.7, fontWeight: 500, marginBottom: '2rem' }}>
+      
+      <div style={{ maxWidth: 800, fontSize: '1.05rem', color: '#222', lineHeight: 1.7, fontWeight: 500 }}>
         <b>Title of the research:</b> Research on development of generative AI-based digital doppelganger and communication process with doppelganger<br />
         <b>Principal Investigator:</b> Eun-mee Kim (Professor, Department of Communication)<br /><br />
         <ul style={{ paddingLeft: 20 }}>
@@ -34,20 +44,48 @@ export default function ConsentFormPage() {
           <li>I understand that I can withdraw from the research at any time without any detriment to myself.</li>
         </ul>
         <div style={{ marginTop: '2rem', fontWeight: 600 }}>Do you agree to participate in this study?</div>
-        <div style={{ display: 'flex', gap: '2rem', margin: '1.5rem 0' }}>
+        
+        <div style={{ marginTop: '1rem' }}>
           <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 500 }}>
-            <input type="radio" name="consent" value="agree" checked={consent === 'agree'} onChange={() => setConsent('agree')} /> Agree
+            <input 
+              type="radio" 
+              name="consent" 
+              value="agree" 
+              checked={consent === 'agree'} 
+              onChange={() => setConsent('agree')}
+              disabled={isLoading}
+            /> Agree
           </label>
           <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 500 }}>
-            <input type="radio" name="consent" value="disagree" checked={consent === 'disagree'} onChange={() => setConsent('disagree')} /> Disagree
+            <input 
+              type="radio" 
+              name="consent" 
+              value="disagree" 
+              checked={consent === 'disagree'} 
+              onChange={() => setConsent('disagree')}
+              disabled={isLoading}
+            /> Disagree
           </label>
         </div>
+        
+        {error && <div style={{ color: 'red', fontWeight: 500, marginTop: '1rem' }}>{error}</div>}
+        
         <button
-          style={{ background: consent === 'agree' ? '#000' : '#888', color: '#fff', border: 'none', borderRadius: '12px', padding: '16px 40px', fontSize: '1.2rem', fontWeight: 'bold', cursor: consent === 'agree' ? 'pointer' : 'not-allowed', marginTop: '1.5rem' }}
-          disabled={consent !== 'agree'}
+          style={{ 
+            background: consent === 'agree' && !isLoading ? '#000' : '#888', 
+            color: '#fff', 
+            border: 'none', 
+            borderRadius: '12px', 
+            padding: '16px 40px', 
+            fontSize: '1.2rem', 
+            fontWeight: 'bold', 
+            cursor: consent === 'agree' && !isLoading ? 'pointer' : 'not-allowed', 
+            marginTop: '1.5rem' 
+          }}
+          disabled={consent !== 'agree' || isLoading}
           onClick={handleSubmit}
         >
-          Submit
+          {isLoading ? 'Saving...' : 'Submit'}
         </button>
       </div>
     </div>
